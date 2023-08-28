@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-md-6 mx-auto well text-center input-group mb-4">
+    <input
+      class="form-control font-weight-light"
+      placeholder="Enter a zipcode or city name"
+      type="text"
+      id="addLocation"
+      #locationInput
+      (keyup.enter)="addLocation(locationInput.value)"
+      [(ngModel)]="newLocation"
+    />
+    <div class="input-group-append">
+      <button
+        class="btn btn-block btn-dark font-weight-light"
+        type="button"
+        (click)="addLocation(locationInput.value)"
+      >
+        Add location
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid pb-5">
+  <div class="row" *ngFor="let location of locations">
+    <app-location [id]="location" [locations]="locations"></app-location>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="mt-2 p-4 col-md-10 rounded mx-auto flex font-weight-light location">
+  <ng-container *ngIf="weatherData?.location; else loadingBlock">
+    <div class="col-md-9">
+      <h3>
+        {{ weatherData.location.name }}
+        <small>[{{ weatherData.location.country }}]</small>
+      </h3>
+      <h5>Current conditions: {{ weatherData.current.condition.text }}</h5>
+      <h5>Temperatures today:</h5>
+      <p>Current {{ weatherData.current.temp_c }}°C - {{ weatherData.current.temp_f }}°F</p>
+      <button type="button" class="btn btn-link p-0 font-weight-light" (click)="navigateForecast()">
+        Show 5-day forecast for {{ weatherData.location.name }}
+      </button>
+    </div>
+    <div class="col-md-3 d-flex align-items-center">
+      <img src=" {{ getImage(weatherData.current?.condition?.icon) }}" />
+    </div>
+  </ng-container>
+  <ng-template #loadingBlock>Loading...</ng-template>
+  <span class="close" (click)="removeLocation(id)">×</span>
+</div>

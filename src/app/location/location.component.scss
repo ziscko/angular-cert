@@ -1,0 +1,27 @@
+:host {
+  width: 100%;
+}
+
+.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.icon {
+  width: 45px;
+  height: 45px;
+  position: absolute;
+  right: 20px;
+  top: -2px;
+}
+
+.close {
+  cursor: pointer;
+  position: absolute;
+  right: 0.75rem;
+  top: 0.5rem;
+}
