@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
-import { WeatherService } from '../services/weather.service'
-import { isZipCode } from '../utils/helpers'
+import { WeatherService } from '../../services/weather.service'
+import { isZipCode } from '../../utils/helpers'
 
 @Component({
   selector: 'app-forecast',
@@ -32,7 +32,6 @@ export class ForecastComponent implements OnInit {
   getForecastData() {
     this.weatherService.getForecast(this.id).subscribe((data: any) => {
       this.forecastData = data
-      console.log(this.forecastData)
     })
   }
 

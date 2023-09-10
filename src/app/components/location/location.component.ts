@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { WeatherService } from '../services/weather.service'
 import { delay } from 'rxjs/operators'
-import { isZipCode } from '../utils/helpers'
 import { Router } from '@angular/router'
+import { WeatherData } from 'src/app/interfaces/weather-interfaces'
+import { WeatherService } from 'src/app/services/weather.service'
+import { isZipCode } from 'src/app/utils/helpers'
 
 @Component({
   selector: 'app-location',
@@ -13,7 +14,7 @@ export class LocationComponent implements OnInit {
   @Input() id: string | undefined
   @Input() locations: string[] | undefined
 
-  weatherData: any
+  weatherData: WeatherData | undefined
 
   constructor(private weatherService: WeatherService, private router: Router) {}
 
@@ -27,7 +28,7 @@ export class LocationComponent implements OnInit {
 
       .pipe(delay(100)) // For testing purposes
 
-      .subscribe((data: any) => {
+      .subscribe((data: WeatherData) => {
         this.weatherData = data
       })
   }
@@ -43,7 +44,7 @@ export class LocationComponent implements OnInit {
   navigateForecast(): void {
     if (this.id && isZipCode(this.id)) {
       this.router.navigate(['/forecast', this.id])
-    } else {
+    } else if (this.weatherData) {
       this.router.navigate([
         '/forecast',
         this.weatherData.location.name + ' ' + this.weatherData.location.country,
