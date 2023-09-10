@@ -27,6 +27,7 @@ export class HomeComponent implements OnInit {
     if (this.locations.length < 5 && value.trim() !== '') {
       this.locations.push(value)
       localStorage.setItem('locations', JSON.stringify(this.locations))
+    } else {
     }
     this.newLocation = ''
   }
