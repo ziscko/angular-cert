@@ -19,6 +19,11 @@
       <img src=" {{ getImage(icon) }}" alt="weather icon" />
     </div>
   </ng-container>
-  <ng-template #loadingBlock>Loading...</ng-template>
+  <ng-template #loadingBlock>
+    <div class="container">
+      <p>Loading "{{ id }}"...</p>
+      <p *ngIf="statusMessage" class="text-danger">{{ statusMessage }}</p>
+    </div>
+  </ng-template>
   <span class="close" (click)="removeLocation(id)">×</span>
 </div>

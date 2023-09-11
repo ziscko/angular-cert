@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router'
 import { WeatherService } from '../../services/weather.service'
 import { isZipCode } from '../../utils/helpers'
 import { ForecastData } from 'src/app/interfaces/forecast-interfaces'
+import { delay } from 'rxjs/operators'
 
 @Component({
   selector: 'app-forecast',
@@ -31,9 +32,12 @@ export class ForecastComponent implements OnInit {
   }
 
   getForecastData() {
-    this.weatherService.getForecast(this.id).subscribe((data: ForecastData) => {
-      this.forecastData = data
-    })
+    this.weatherService
+      .getForecast(this.id)
+      .pipe(delay(300)) // For testing purposes
+      .subscribe((data: ForecastData) => {
+        this.forecastData = data
+      })
   }
 
   navigateBack(): void {

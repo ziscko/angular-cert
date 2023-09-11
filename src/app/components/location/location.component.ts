@@ -4,6 +4,7 @@ import { Router } from '@angular/router'
 import { WeatherData } from 'src/app/interfaces/weather-interfaces'
 import { WeatherService } from 'src/app/services/weather.service'
 import { isZipCode } from 'src/app/utils/helpers'
+import { ToastrService } from 'ngx-toastr'
 
 @Component({
   selector: 'app-location',
@@ -15,8 +16,13 @@ export class LocationComponent implements OnInit {
   @Input() locations: string[] | undefined
 
   weatherData: WeatherData | undefined
+  statusMessage: string | undefined
 
-  constructor(private weatherService: WeatherService, private router: Router) {}
+  constructor(
+    private weatherService: WeatherService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.id && this.getWeatherForLocation(this.id)
@@ -25,11 +31,23 @@ export class LocationComponent implements OnInit {
   getWeatherForLocation(location: string): void {
     this.weatherService
       .getCurrentWeather(location)
-
       .pipe(delay(100)) // For testing purposes
-
-      .subscribe((data: WeatherData) => {
-        this.weatherData = data
+      .subscribe({
+        next: (d) => (this.weatherData = d),
+        error: (e) => {
+          this.toastr.error(
+            `An error occurred while fetching weather data: ${e.error.error?.message}`,
+            `Error ${e.status}`,
+            {
+              closeButton: true,
+              progressBar: true,
+              progressAnimation: 'increasing',
+              positionClass: 'toast-bottom-right',
+              timeOut: 4000,
+            }
+          )
+          this.statusMessage = e.error.error?.message
+        },
       })
   }
 
