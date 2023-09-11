@@ -9,8 +9,18 @@ import { AppRoutingModule } from './app-routing.module'
 import { HomeComponent } from './components/home/home.component'
 import { LocationComponent } from './components/location/location.component'
 import { WeatherService } from './services/weather.service'
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { ToastrModule } from 'ngx-toastr'
 @NgModule({
-  imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+  ],
   declarations: [AppComponent, ForecastComponent, HomeComponent, LocationComponent],
   providers: [WeatherService],
   bootstrap: [AppComponent],
