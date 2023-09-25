@@ -1,4 +1,4 @@
-<div class="mt-2 p-4 col-md-12 rounded mx-auto flex font-weight-light location">
+<div class="mt-2 p-4 col-md-12 rounded mx-auto flex font-weight-light location" appHoverHighlight>
   <ng-container *ngIf="forecastData; else loadingBlock">
     <h3>
       {{ forecastData.location.name }}, {{ forecastData.location.country }}

@@ -14,6 +14,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { ToastrModule } from 'ngx-toastr'
 import { BackgroundCloudsComponent } from './components/background-clouds/background-clouds.component'
 import { IconPipe } from './pipes/icon.pipe'
+import { HoverHighlightDirective } from './directives/hover-highlight.directive'
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -30,6 +32,7 @@ import { IconPipe } from './pipes/icon.pipe'
     LocationComponent,
     BackgroundCloudsComponent,
     IconPipe,
+    HoverHighlightDirective,
   ],
   providers: [WeatherService],
   bootstrap: [AppComponent],
