@@ -2,7 +2,9 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli)
 
-Demo: ![image](https://github.com/ziscko/angular-cert/assets/4873908/ff6cbfaa-4f34-48ce-be86-068f8680182f)
+Demo: 
+[https://weatherdemo.ziscko.com/](https://weatherdemo.ziscko.com/)
+![image](https://github.com/ziscko/angular-cert/assets/4873908/ff6cbfaa-4f34-48ce-be86-068f8680182f)
 
 ## Development server
 
