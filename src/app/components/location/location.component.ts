@@ -51,14 +51,6 @@ export class LocationComponent implements OnInit {
       })
   }
 
-  getImage(image: string): string {
-    if (image) {
-      return image.replace('64x64', '128x128')
-    }
-
-    return 'https://www.angulartraining.com/images/weather/sun.png'
-  }
-
   navigateForecast(): void {
     if (this.id && isZipCode(this.id)) {
       this.router.navigate(['/forecast', this.id])

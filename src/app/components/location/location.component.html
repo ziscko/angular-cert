@@ -1,6 +1,6 @@
 <div class="mt-2 p-4 col-md-10 rounded mx-auto flex font-weight-light location">
   <ng-container *ngIf="weatherData; else loadingBlock">
-    <div class="col-md-9">
+    <div class="col-md-9" (click)="navigateForecast()">
       <h3>
         {{ weatherData.location.name }}
         <small>[{{ weatherData.location.country }}]</small>
@@ -8,15 +8,15 @@
       <h5>Current conditions: {{ weatherData.current.condition.text }}</h5>
       <h5>Temperatures today:</h5>
       <p>Current {{ weatherData.current.temp_c }}°C - {{ weatherData.current.temp_f }}°F</p>
-      <button type="button" class="btn btn-link p-0 font-weight-light" (click)="navigateForecast()">
+      <button type="button" class="btn btn-link p-0 font-weight-light">
         Show 3-day forecast for {{ weatherData.location.name }}
       </button>
     </div>
     <div
-      *ngIf="weatherData.current.condition.icon as icon"
+      *ngIf="weatherData.current.condition.icon as image"
       class="col-md-3 d-flex align-items-center"
     >
-      <img src=" {{ getImage(icon) }}" alt="weather icon" />
+      <img [src]="image | icon" alt="weather icon" />
     </div>
   </ng-container>
   <ng-template #loadingBlock>
