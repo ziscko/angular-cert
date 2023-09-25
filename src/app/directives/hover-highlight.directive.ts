@@ -18,10 +18,9 @@ export class HoverHighlightDirective {
   @HostListener('click') onClick() {
     if (this.currentScale < 3) {
       this.currentScale += 0.2
-      this.renderer.setStyle(this.el.nativeElement, 'transform', `scale(${this.currentScale})`)
     } else {
-      const parent = this.renderer.parentNode(this.el.nativeElement)
-      this.renderer.removeChild(parent, this.el.nativeElement)
+      this.currentScale = 1
     }
+    this.renderer.setStyle(this.el.nativeElement, 'transform', `scale(${this.currentScale})`)
   }
 }
