@@ -1,11 +1,8 @@
 # AngularCert
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli)
 
-Demo: [https://weatherdemo.ziscko.com](https://weatherdemo.ziscko.com)
-
-![prev_1](https://github.com/ziscko/angular-cert/assets/4873908/a47917ec-ad6f-49ce-b713-a3df8c6d6fc6)
-![prev_2](https://github.com/ziscko/angular-cert/assets/4873908/fc4f497c-e9d4-4198-93d0-38f61260a3a6)
+Demo: ![image](https://github.com/ziscko/angular-cert/assets/4873908/ff6cbfaa-4f34-48ce-be86-068f8680182f)
 
 ## Development server
 
