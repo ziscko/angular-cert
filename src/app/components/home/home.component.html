@@ -24,6 +24,10 @@
 
 <div class="container-fluid pb-5">
   <div class="row" *ngFor="let location of locations">
-    <app-location [id]="location" [locations]="locations"></app-location>
+    <app-location
+      [id]="location"
+      [locations]="locations"
+      (locationRemoved)="onLocationRemoved($event)"
+    ></app-location>
   </div>
 </div>

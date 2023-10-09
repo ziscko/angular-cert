@@ -41,4 +41,12 @@ export class HomeComponent implements OnInit {
     }
     this.newLocation = ''
   }
+
+  onLocationRemoved(locationID: string) {
+    this.toastr.success(`${locationID} deleted`, 'Success', {
+      closeButton: true,
+      positionClass: 'toast-bottom-right',
+      timeOut: 2000,
+    })
+  }
 }

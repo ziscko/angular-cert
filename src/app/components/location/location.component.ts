@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core'
 import { delay } from 'rxjs/operators'
 import { Router } from '@angular/router'
 import { WeatherData } from 'src/app/interfaces/weather-interfaces'
@@ -14,6 +14,7 @@ import { ToastrService } from 'ngx-toastr'
 export class LocationComponent implements OnInit {
   @Input() id: string | undefined
   @Input() locations: string[] | undefined
+  @Output() locationRemoved: EventEmitter<string> = new EventEmitter<string>()
 
   weatherData: WeatherData | undefined
   statusMessage: string | undefined
@@ -68,6 +69,7 @@ export class LocationComponent implements OnInit {
       if (index !== -1) {
         this.locations.splice(index, 1)
         localStorage.setItem('locations', JSON.stringify(this.locations))
+        this.locationRemoved.emit(id)
       }
     }
   }
